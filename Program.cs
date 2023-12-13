@@ -90,7 +90,7 @@ namespace Project4
             int pivot = input[high];
             int i = low - 1;
 
-            for (int j = low; j < high; j++)
+            for (int j = low; j <= high - 1; j++)
             {
                 if (input[j] < pivot)
                 {
