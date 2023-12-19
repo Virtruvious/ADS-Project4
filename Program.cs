@@ -19,6 +19,15 @@ namespace Project4
 
                 int[] data = GenerateRandomData(size);
 
+                string file = $"..\\..\\..\\data{size}.txt";
+                using (StreamWriter sw = File.CreateText(file))
+                {
+                    foreach (int i in data)
+                    {
+                        sw.Write(i + ",");
+                    }
+                }
+
                 bubbleSortTimer.Start();
                 int[] bubbleSortData = BubbleSort(data);
                 bubbleSortTimer.Stop();
@@ -29,15 +38,6 @@ namespace Project4
 
                 Console.WriteLine(size + "\t\t" + bubbleSortTimer.ElapsedMilliseconds + "ms \t\t\t" + quickSortTimer.ElapsedMilliseconds + "ms");
             }
-
-            //string file = "..\\..\\..\\data.txt";
-            //using (StreamWriter sw = File.CreateText(file))
-            //{
-            //    foreach (int i in data)
-            //    {
-            //        sw.Write(i + ",");
-            //    }
-            //}
         }
 
         static int[] GenerateRandomData(int length)
@@ -55,7 +55,7 @@ namespace Project4
         static int[] BubbleSort(int[] input)
         {
             int length = input.Length;
-            int temp = 0;
+            int temp;
 
             bool noswap = false;
 
